@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AetherMind - Personal AI Chief of Staff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-in">
+    <p class="brand"><span class="dot"></span>AetherMind</p>
+    <h1>Talk it out.<br>Get it done.</h1>
+    <p class="sub">Speak or type a messy note. Your AI chief of staff pulls out the tasks, deadlines and reminders, then files them in your workspace.</p>
+    <ol class="steps" aria-label="How it works">
+      <li id="s1" class="on">Capture</li><li id="s2">Review</li><li id="s3">Saved</li>
+    </ol>
+  </div>
+</header>
+
+<section class="stats" aria-label="Workspace summary">
+  <div><b id="st-open">0</b><span>Open tasks</span></div>
+  <div><b id="st-high" class="hi">0</b><span>High priority</span></div>
+  <div><b id="st-today">0</b><span>Due today</span></div>
+  <div><b id="st-done" class="lo">0</b><span>Completed</span></div>
+</section>
+
+<main class="layout">
+  <section class="panel capture" aria-labelledby="cap-h">
+    <h2 id="cap-h">New note</h2>
+    <p class="hint">Try an example:</p>
+    <div class="chips" id="chips">
+      <button type="button" class="chip" data-ex="Tomorrow I must send the budget report to Priya, it's urgent. Remind me Friday 9am to book the venue. Sometime next month, clean up the shared drive.">Work day</button>
+      <button type="button" class="chip" data-ex="I need to submit my CSB312 mini project by 30 October, very important. Call the dentist next Monday to reschedule, no rush. Buy a birthday gift for Rohan before Saturday. Remind me tonight at 8pm to revise GenAI notes.">Student week</button>
+      <button type="button" class="chip" data-ex="Hello, how are you today?">No tasks (error test)</button>
+    </div>
+    <label for="note" class="sr">Your note</label>
+    <textarea id="note" rows="8" placeholder="Type, paste or record your note here…"></textarea>
+    <div class="row">
+      <button id="mic" class="ghost" type="button">&#127908; Record voice</button>
+      <label class="ghost filebtn">&#128196; Upload .txt<input id="file" type="file" accept=".txt,text/plain" hidden></label>
+      <span id="count" class="muted">0 / 6000</span>
+    </div>
+    <button id="extract" class="primary wide" type="button"><span class="spin" hidden></span><span id="extract-label">Extract tasks</span></button>
+    <div id="status" role="status" aria-live="polite"></div>
+
+    <div id="preview" hidden>
+      <h2>Review before saving</h2>
+      <p class="muted">Fix anything the AI got wrong. Nothing is saved until you confirm.</p>
+      <div id="cards"></div>
+      <button id="save" class="primary wide" type="button">Save to workspace</button>
+    </div>
+  </section>
+
+  <section class="panel board-panel" aria-labelledby="board-h">
+    <div class="board-head">
+      <h2 id="board-h">Workspace</h2>
+      <div class="tabs" id="tabs" role="tablist">
+        <button class="tab on" data-f="all">All</button><button class="tab" data-f="high">High</button>
+        <button class="tab" data-f="today">Today</button><button class="tab" data-f="done">Done</button>
+      </div>
+    </div>
+    <div id="confirm" role="status" aria-live="polite"></div>
+    <div id="board"></div>
+  </section>
+</main>
+<footer class="foot">CSB312 Generative AI &middot; Mini Project 2 &middot; AetherMind</footer>
+<script src="app.js"></script>
+</body>
+</html>
