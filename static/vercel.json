@@ -1,0 +1,1 @@
+{ "rewrites": [ { "source": "/api/:path*", "destination": "https://aethermind-e2ip.onrender.com/api/:path*" } ] }
